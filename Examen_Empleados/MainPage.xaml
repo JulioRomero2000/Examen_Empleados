@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Examen_Empleados.MainPage"
+    Title="Gestión de Empleados"
+    BackgroundColor="#F8FAFC">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="12">
+            <!-- Título principal -->
+            <Label
+                Text="Examen 1_Gestión de Empleados"
+                FontSize="23"
+                FontAttributes="Bold"
+                TextColor="#334155"
+                HorizontalOptions="Center"
+                Margin="0,5,0,10" />
+            <!-- Formulario -->
+            <Label
+                Text="Formulario de Empleado"
+                FontSize="18"
+                FontAttributes="Bold"
+                TextColor="#475569" />
+            <Entry
+                x:Name="txtNombres"
+                Placeholder="Nombres"
+                TextColor="#334155"
+                PlaceholderColor="#94A3B8" />
+            <Entry
+                x:Name="txtApellidos"
+                Placeholder="Apellidos"
+                TextColor="#334155"
+                PlaceholderColor="#94A3B8" />
+            <Entry
+                x:Name="txtPuesto"
+                Placeholder="Puesto"
+                TextColor="#334155"
+                PlaceholderColor="#94A3B8" />
+            <Entry
+                x:Name="txtSalario"
+                Placeholder="Salario"
+                Keyboard="Numeric"
+                TextColor="#334155"
+                PlaceholderColor="#94A3B8" />
+            <Entry
+                x:Name="txtCorreo"
+                Placeholder="Correo Electrónico"
+                Keyboard="Email"
+                TextColor="#334155"
+                PlaceholderColor="#94A3B8" />
+            <!-- Fecha de ingreso -->
+            <Label
+                Text="Fecha de Ingreso:"
+                FontAttributes="Bold"
+                TextColor="#475569" />
+            <DatePicker
+                x:Name="dpFechaIngreso"
+                Format="dd/MM/yyyy"
+                TextColor="#334155" />
+            <!-- Botones -->
+            <Grid
+                ColumnDefinitions="*,*,*"
+                ColumnSpacing="8"
+                Margin="0,10,0,10">
+                <!-- Guardar -->
+                <Button
+                    Grid.Column="0"
+                    Text="Guardar"
+                    Clicked="OnGuardarClicked"
+                    BackgroundColor="#DCEAFE"
+                    TextColor="#234B83"
+                    CornerRadius="12"
+                    FontAttributes="Bold"
+                    Padding="5,12" />
+                <!-- Eliminar -->
+                <Button
+                    Grid.Column="1"
+                    Text="Eliminar"
+                    Clicked="OnEliminarClicked"
+                    BackgroundColor="#FCE1E1"
+                    TextColor="#9C4444"
+                    CornerRadius="12"
+                    FontAttributes="Bold"
+                    Padding="5,12" />
+                <!-- Limpiar -->
+                <Button
+                    Grid.Column="2"
+                    Text="Limpiar"
+                    Clicked="OnLimpiarClicked"
+                    BackgroundColor="#E5E7EB"
+                    TextColor="#374151"
+                    CornerRadius="12"
+                    FontAttributes="Bold"
+                    Padding="5,12" />
+            </Grid>
+            <!-- Separador -->
+            <BoxView
+                HeightRequest="1"
+                Color="#CBD5E1"
+                Margin="0,10" />
+            <!-- Lista -->
+            <Label
+                Text="Lista de Empleados"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="#334155"
+                HorizontalOptions="Center"
+                Margin="0,5,0,10" />
+            <Label
+                Text="Seleccione un empleado para editar o eliminar."
+                FontSize="12"
+                TextColor="#64748B"
+                HorizontalOptions="Center" />
+            <ListView
+                x:Name="listViewEmpleados"
+                ItemSelected="OnEmpleadoSelected"
+                SelectionMode="Single"
+                HasUnevenRows="True"
+                SeparatorVisibility="Default"
+                SeparatorColor="#CBD5E1"
+                BackgroundColor="#FFFFFF"
+                HeightRequest="350">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <VerticalStackLayout
+                                Padding="12"
+                                Spacing="5">
+                                <Label
+                                    Text="{Binding Nombres, StringFormat='Nombres: {0}'}"
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    TextColor="#334155" />
+                                <Label
+                                    Text="{Binding Apellidos, StringFormat='Apellidos: {0}'}"
+                                    FontSize="14"
+                                    TextColor="#64748B" />
+                                <Label
+                                    Text="{Binding Puesto, StringFormat='Puesto: {0}'}"
+                                    FontSize="14"
+                                    TextColor="#64748B" />
+                                <Label
+                                    Text="{Binding Salario, StringFormat='Salario: L {0:N2}'}"
+                                    FontSize="14"
+                                    TextColor="#475569" />
+                            </VerticalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
